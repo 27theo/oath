@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<ScriptPackage>
+		<ScriptGroup isActive="yes" isFolder="yes">
+			<name>Oath (by Romaen)</name>
+			<packageName></packageName>
+			<script>
+
+if not oath then
+
+cecho([[&lt;green&gt;
+
+
+                                ,_-=(!7(7/zs_.                   .ooooooo.   
+                             .='  ' .`/,/!(=)Zm.                d8P'   `Y8b  
+               .._,,._..  ,-`- `,\ ` -` -`\\7//WW.             888       888 
+          ,v=~/.-,-\- -!|V-s.)iT-|s|\-.'   `///mK%.            888       888 
+        v!`i!-.e]-g`bT/i(/[=.Z/m)K(YNYi..   /-]i44M.           888       888 
+      v`/,`|v]-DvLcfZ/eV/iDLN\D/ZK@%8W[Z..   `/d!Z8m           `88b     d88' 
+     //,c\(2(X/NYNY8]ZZ/bZd\()/\7WY%WKKW)   -'|(][%4.           `Y8boood8P' 
+   /-iit5N)KWG%%8%%%%W8%ZWM(8YZvD)XN(@.  [   \]!/GXW[
+  / ))G8\NMN%W%%%%%%%%%%8KK@WZKYK*ZG5KMi,-   vi[NZGM[               .o.       
+ i\!(44Y8K%8%%%**~YZYZ@%%%%%4KWZ/PKN)ZDZ7   c=//WZK%!              .888.      
+,\v\YtMZW8W%%f`,`.t/bNZZK%%W%%ZXb*K(K5DZ   -c\\/KM48              .8"888.     
+-|c5PbM4DDW%f  v./c\[tMY8W%PMW%D@KW)Gbf   -/(=ZZKM8[             .8' `888.    
+2(N8YXWK85@K   -'c|K4/KKK%@  V%@@WD8e~  .//ct)8ZK%8`            .88ooo8888.   
+=)b%]Nd)@KM[  !'\cG!iWYK%%|   !M@KZf    -c\))ZDKW%`            .8'     `888.  
+YYKWZGNM4/Pb  '-VscP4]b@W%     'Mf`   -L\///KM(%W!            o88o     o8888o 
+!KKW4ZK/W7)Z. '/cttbY)DKW%     -`  .',\v)K(5KW%%f
+'W)KWKZZg)Z2/,!/L(-DYYb54%  ,,`, -\-/v(((KK5WW%f              ooooooooooooooo
+ \M4NDDKZZ(e!/\7vNTtZd)8\Mi!\-,-/i-v((tKNGN%W%%               8'    888    `8 
+ 'M8M88(Zd))///((|D\tDY\\KK-`/-i(=)KtNNN@W%%%@%[                    888      
+  !8%@KW5KKN4///s(\Pd!ROBY8/=2(/4ZdzKD%K%%%M8@%%                    888      
+   '%%%W%dGNtPK(c\/2\[Z(ttNYZ2NZW8W8K%%%%YKM%M%%.                   888      
+     *%%W%GW5@/%!e]_tZdY()v)ZXMZW%W%%%*5Y]K%ZK%8[                   888      
+      '*%%%%8%8WK\)[/ZmZ/Zi]!/M%%%%@f\ \Y/NNMK%%!                  o888o     
+        'VM%%%%W%WN5Z/Gt5/b)((cV@f`  - |cZbMKW%%|
+           'V*M%%%WZ/ZG\t5((+)L'-,,/  -)X(NWW%%               ooooo     ooooo 
+                `~`MZ/DZGNZG5(((\,    ,t\\Z)KW%@              `888'     `888' 
+                   'M8K%8GN8\5(5///]i!v\K)85W%%f               888       888  
+                     YWWKKKKWZ8G54X/GGMeK@WM8%@                888ooooooo888  
+                      !M8%8%48WG@KWYbW%WWW%%%@                 888       888  
+     &lt;ansi_green&gt;(by Romaen) &lt;green&gt;       VM%WKWK%8K%%8WWWW%%%@`                 888       888  
+                          ~*%%%%%%W%%%%%%%@~                  o888o     o888o  
+                             ~*MM%%%%%%@f`
+                                 '''''
+
+]])
+
+send(" ", false)
+
+end
+
+oath = oath or {}
+oath.affs = oath.affs or {}
+
+function oath.echo(str)
+  cecho("&lt;dodger_blue&gt;[&lt;cyan&gt;Oath&lt;dodger_blue&gt;]: &lt;white&gt;" .. str:trim() .. "\n")
+end</script>
+			<eventHandlerList />
+			<ScriptGroup isActive="yes" isFolder="yes">
+				<name>Affliction tracking [CLICK ME]</name>
+				<packageName></packageName>
+				<script>-- Add an affliction to simply not track it:
+oath.ignore = {
+  insomnia = true,
+  blindness = true,
+  deafness = true,
+}
+
+-- Abbreviate afflictions here, for use in the prompt tag:
+oath.abbreviate = {
+    flushings = "flsh",
+    paralysis = "PARA",
+    pyramides = "pyra",
+    burning = "burn",
+    frozen = "froz",
+    temperedcholeric = "chol",
+    temperedmelancholic = "melan",
+    temperedphlegmatic = "phleg",
+    temperedsanguine = "sang",
+    brokenleftarm = "la1",
+    brokenleftleg = "ll1",
+    brokenrightarm = "ra1",
+    brokenrightleg = "rl1",
+    bruisedribs = "brib",
+    calcifiedskull = "cal-sk",
+    calcifiedtorso = "cal-to",
+    coldfate = "cfate",
+    blackout = "black",
+    blindness = "blind",
+    bound = "bound",
+    conflagration = "cflg",
+    crackedribs = "crrb",
+    crushedthroat = "crthr",
+    daeggerimpale = "daeg-imp",
+    damagedhead = "H2",
+    damagedleftarm = "LA2",
+    damagedleftleg = "LL2",
+    damagedrightarm = "RA2",
+    damagedrightleg = "RL2",
+    deadening = "dedn",
+    deepsleep = "dsleep",
+    degenerate = "dgen",
+    demonstain = "dstain",
+    entangled = "tangl",
+    flamefisted = "ffst",
+    grievouswounds = "gwound",
+    healthleech = "hlch",
+    heartseed = "hseed",
+    homunculusmercury = "hmerc",
+    hypersomnia = "hsom",
+    hypochondria = "hchon",
+    hypothermia = "hthrm",
+    impaled = "impale",
+    internalbleeding = "ibld",
+    laceratedthroat = "lthr",
+    lightbind = "lbind",
+    manaleech = "mleech",
+    mangledhead = "H3",
+    mangledleftarm = "LA3",
+    mangledleftleg = "LL3",
+    mangledrightarm = "RA3",
+    mangledrightleg = "RL3",
+    mildtrauma = "TT1",
+    mindclamp = "mclam",
+    mindravaged = "mrav",
+    numbedleftarm = "numla",
+    numberrightarm = "numra",
+    paranoia = "prna",
+    parasite = "prst",
+    peace = "peace",
+    petrified = "ptri",
+    pinshot = "pshot",
+    prone = "prone",
+    serioustrauma = "TT2",
+    shadowmadness = "smad",
+    skullfractures = "sfrac",
+    slashedthroat = "slthr",
+    sleeping = "sleep",
+    slickness = "slick",
+    spiritburn = "sburn",
+    temperedsanguine = 'sangu',
+    temperedcholeric = 'choler',
+    temperedphlegmatic = 'phleg',
+    temperedmelancholic = 'melan',
+    timeflux = "tflx",
+    timeloop = "tloop",
+    torntendons = "tend",
+    transfixation = "tfix",
+    trueblind = "tblind",
+    unweavingbody = "ubody",
+    unweavingmind = "umind",
+    unweavingspirit = "usprt",
+    waterbonds = "wbond",
+    weakenedmind = "wmind",
+    whisperingmadness = "wmad",
+    wristfractures = "wfrac",
+    impatience = "IMP",
+    anorexia = "ANOR",
+    voyria = "VOYR",
+    disrupted = "DISR",
+    slickness = "SLCK",
+    prone = "PR",
+    asthma = "AST",
+    latched = "LATCH",
+  }</script>
+				<eventHandlerList />
+				<Script isActive="yes" isFolder="no">
+					<name>aff functions</name>
+					<packageName></packageName>
+					<script>function oath.gainAff()
+  local a = gmcp.Char.Afflictions.Add.name
+  if (not oath.ignore[a]) and (not oath.affs[a]) then
+    cecho("&lt;DarkSlateGrey&gt;[&lt;firebrick&gt;aff&lt;DarkSlateGrey&gt;] &lt;red&gt;" .. a:lower() .. "\n")
+    oath.affs[a] = true
+    raiseEvent("oath got aff", a:lower())
+  end
+end
+
+registerAnonymousEventHandler("gmcp.Char.Afflictions.Add", "oath.gainAff")
+
+function oath.loseAff()
+  local a = gmcp.Char.Afflictions.Remove[1]
+  if (not oath.ignore[a]) and (oath.affs[a]) then
+    cecho("&lt;DarkSlateGrey&gt;[&lt;ansi_green&gt;aff&lt;DarkSlateGrey&gt;] &lt;green&gt;" .. a:lower() .. "\n")
+    oath.affs[a] = nil
+    raiseEvent("oath lost aff", a:lower())
+  end
+end
+
+registerAnonymousEventHandler("gmcp.Char.Afflictions.Remove", "oath.loseAff")
+
+function oath.newAffs()
+  local t = gmcp.Char.Afflictions.List 
+  local b = {}
+  for _, v in pairs(t) do
+    if (not oath.ignore[v.name]) and (not oath.affs[v.name]) then
+      cecho("&lt;DarkSlateGrey&gt;[&lt;firebrick&gt;aff&lt;DarkSlateGrey&gt;] &lt;red&gt;" .. v.name:lower() .. "\n")
+      raiseEvent("oath got aff", v.name:lower())
+    end
+    b[v.name] = true
+  end
+  for k, v in pairs(oath.affs) do 
+    if v and (not oath.ignore[k]) and (not b[k]) then
+      cecho("&lt;DarkSlateGrey&gt;[&lt;ansi_green&gt;aff&lt;DarkSlateGrey&gt;] &lt;green&gt;" .. k:lower() .. "\n")
+      raiseEvent("oath lost aff", k:lower())
+    end
+  end
+  oath.affs = {}
+  for _, v in pairs(t) do 
+    oath.affs[v.name] = true
+  end
+end
+
+registerAnonymousEventHandler("gmcp.Char.Afflictions.List", "oath.newAffs")</script>
+					<eventHandlerList />
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>aff prompt</name>
+					<packageName></packageName>
+					<script>function oath.prompt()
+  local t, m = {}, ""
+  for a in pairs(oath.affs) do 
+    if not oath.ignore[a] then
+      m = oath.abbreviate[a] or a:sub(1, 3)
+      t[#t+1] = m
+    end
+  end
+  if table.is_empty(t) then
+    return ""
+  else
+    return "&lt;salmon&gt;[ " .. table.concat(t, " ") .. " ]"
+  end
+end</script>
+					<eventHandlerList />
+				</Script>
+			</ScriptGroup>
+			<ScriptGroup isActive="yes" isFolder="yes">
+				<name>Class detection [CLICK ME]</name>
+				<packageName></packageName>
+				<script>oath.t = oath.t or {}
+
+-- Change this to time before class is undetected:
+oath.time = 12</script>
+				<eventHandlerList />
+				<Script isActive="yes" isFolder="no">
+					<name>class functions</name>
+					<packageName></packageName>
+					<script>function oath.add(class) 
+  class = class:trim():lower()
+  if oath.t[class] then
+    killTimer(oath.t[class])
+    oath.t[class] = tempTimer(oath.time, [[oath.close("]] .. class .. [[")]])
+  else
+    oath.t[class] = tempTimer(oath.time, [[oath.close("]] .. class .. [[")]])
+    -- grammah time
+    local vow, e = {"a", "e", "i", "o", "u"}, ""
+    if table.contains(vow, class:sub(1, 1)) then e = "n" end
+    echo("\n")
+    oath.echo("&lt;medium_spring_green&gt;Detected that we're fighting a" .. e .. " &lt;yellow&gt;" .. class .. ".")
+    raiseEvent("oath got class", class)
+  end
+end
+
+function oath.close(class)
+  class = class:trim():lower()
+  raiseEvent("oath lost class", class)
+  if oath.t[class] then killTimer(oath.t[class]) end
+  oath.t[class] = nil
+  -- more grammah!!!
+  local vow, e = {"a", "e", "i", "o", "u"}, ""
+  if table.contains(vow, class:sub(1, 1)) then e = "n" end
+  oath.echo("&lt;coral&gt;No longer fighting a" .. e .. " &lt;yellow&gt;" .. class .. ".")
+end
+
+function oath.active(class)
+  class = class:trim():lower()
+  if oath.t[class] then
+    return isActive(oath.t[class], "timer") == 1
+  else
+    return false
+  end
+end</script>
+					<eventHandlerList />
+				</Script>
+			</ScriptGroup>
+			<ScriptGroup isActive="yes" isFolder="yes">
+				<name>Priority swaps</name>
+				<packageName></packageName>
+				<script>oath.swaps = oath.swaps or {}</script>
+				<eventHandlerList />
+				<Script isActive="yes" isFolder="no">
+					<name>[swap] waterlord</name>
+					<packageName></packageName>
+					<script>function oath.swaps.waterlord(event, arg)
+  if oath.pause or not oath.active("waterlord") then return end
+  if event == "oath got class" and arg == "waterlord" then
+    -- This block of code fires once, upon detecting the class.
+    oath.set({
+      ["latched"] = 1,
+      ["paralysis"] = 2,
+      ["slickness"] = 2,
+      ["anorexia"] = 2,
+      ["haemophilia"] = 3, 
+      ["lethargy"] = 3,
+      ["nausea"] = 3,
+      ["weariness"] = 3,
+      ["clumsiness"] = 4,
+      ["asthma"] = 4,
+    })
+    -- This is the variable used to store the waterlord curing mode. 
+    -- We'll set it to one, because we're putting ginseng above kelp atm. 
+    oath.swaps.wlmode = 1
+  elseif event == "oath got aff" or event == "oath lost aff" then
+    -- This block of code fires every time you receive or cure an affliction.
+    -- The following if statement compares the number of ginseng affs with the number of kelp affs.
+    -- It also checks the value of wlmode, so as to not send the same priorities on repeat if, say, you constantly have more ginseng affs than kelp,
+    if oath.count({"haemophilia", "lethargy", "nausea"}) &lt; oath.count({"weariness", "asthma", "clumsiness"}) and oath.swaps.wlmode == 1 then
+      oath.set({
+        ["haemophilia"] = 4,
+        ["lethargy"] = 4,
+        ["nausea"] = 4,
+        ["weariness"] = 3,
+        ["clumsiness"] = 3,
+        ["asthma"] = 3,
+      })    
+      -- We've put kelp above ginseng, so we set wlmode to 2.
+      oath.swaps.wlmode = 2
+    elseif oath.swaps.wlmode == 2 then
+      oath.set({
+        ["haemophilia"] = 3,
+        ["lethargy"] = 3,
+        ["nausea"] = 3,
+        ["weariness"] = 4,
+        ["clumsiness"] = 4,
+        ["asthma"] = 4,
+      })
+      -- We've put ginseng above kelp again, so we set wlmode to 1.
+      oath.swaps.wlmode = 1
+    end
+  elseif event == "oath lost class" and arg == "waterlord" then
+    oath.set({
+      ["latched"] = 1,
+      ["paralysis"] = 1,
+      ["slickness"] = 4,
+      ["anorexia"] = 1,
+      ["haemophilia"] = 5, 
+      ["lethargy"] = 4,
+      ["nausea"] = 4,
+      ["weariness"] = 3,
+      ["clumsiness"] = 3,
+      ["asthma"] = 2,
+    })
+  end
+end
+
+registerAnonymousEventHandler("oath got class", "oath.swaps.waterlord")
+registerAnonymousEventHandler("oath got aff", "oath.swaps.waterlord")
+registerAnonymousEventHandler("oath lost aff", "oath.swaps.waterlord")
+registerAnonymousEventHandler("oath lost class", "oath.swaps.waterlord")</script>
+					<eventHandlerList />
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>prio functions</name>
+					<packageName></packageName>
+					<script>function oath.count(affs)
+  local ret = 0 
+  for _, v in pairs(affs) do 
+    if oath.affs[v] then ret = ret + 1 end
+  end
+  return ret
+end
+
+function oath.set(tab)
+  local ret = "curing priority "
+  for k, v in pairs(tab) do 
+    ret = ret .. k .. " " .. v .. " "
+  end
+  send(ret, false)
+end</script>
+					<eventHandlerList />
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>[swap] TEMPLATE</name>
+					<packageName></packageName>
+					<script>-- This is a generic template. You can find and replace XXXXX with the class name (e.g. pariah).
+-- This line prevents the script from running. Remove it if you copy/paste this template.
+if true then return end
+
+function oath.swaps.XXXXX(event, arg)
+  if oath.pause or not oath.active("XXXXX") then return end
+  if event == "oath got class" and arg == "XXXXX" then
+    oath.set({
+      ["PPPP"] = 1,
+      ["PPPP"] = 2,
+      ["PPPP"] = 4,
+    })
+    oath.swaps.CCMODE = 1
+  elseif event == "oath got aff" or event == "oath lost aff" then
+    if oath.count({"PPPP", "PPPP", "PPPP"}) &lt; oath.count({"PPPP", "PPPP", "PPPP"}) and oath.swaps.CCMODE == 1 then
+      oath.set({
+        ["PPPP"] = 4,
+        ["PPPP"] = 3,
+      }) 
+      oath.swaps.CCMODE = 2
+    elseif oath.swaps.CCMODE == 2 then
+      oath.set({
+        ["PPPP"] = 3,
+        ["PPPP"] = 4,
+      })
+      oath.swaps.CCMODE = 1
+    end
+  elseif event == "oath lost class" and arg == "XXXXX" then
+    oath.set({
+      ["PPPP"] = 1,
+      ["PPPP"] = 3,
+      ["PPPP"] = 2,
+    })
+  end
+end
+
+registerAnonymousEventHandler("oath got class", "oath.swaps.XXXXX")
+registerAnonymousEventHandler("oath got aff", "oath.swaps.XXXXX")
+registerAnonymousEventHandler("oath lost aff", "oath.swaps.XXXXX")
+registerAnonymousEventHandler("oath lost class", "oath.swaps.XXXXX")</script>
+					<eventHandlerList />
+				</Script>
+			</ScriptGroup>
+		</ScriptGroup>
+	</ScriptPackage>
+</MudletPackage>
