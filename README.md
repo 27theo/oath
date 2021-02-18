@@ -1,5 +1,6 @@
 # Oath
 Affliction tracking, class detection, dynamic priorities.
+*NOTE: This is for duelling only. This will not be of use in group scenarios.*
 
 ## Installation
 Please see the releases page on the right. 
