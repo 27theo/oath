@@ -223,7 +223,10 @@ registerAnonymousEventHandler("gmcp.Char.Afflictions.List", "oath.newAffs")</scr
 					<script>function oath.prompt()
   local t, m = {}, ""
   for a in pairs(oath.affs) do 
-    if not oath.ignore[a] then
+    if a:match("%a+ %(%d+%)") then
+      m = oath.abbreviate[a:match("(%a+) %(%d+%)")] or a:match("(%a+) %(%d+%)"):sub(1, 3)
+      t[#t+1] = m .. "<orange_red>(" .. a:match("%a+ %((%d+)%)") .. ")<salmon>"
+    elseif not oath.ignore[a] then
       m = oath.abbreviate[a] or a:sub(1, 3)
       t[#t+1] = m
     end
@@ -231,7 +234,7 @@ registerAnonymousEventHandler("gmcp.Char.Afflictions.List", "oath.newAffs")</scr
   if table.is_empty(t) then
     return ""
   else
-    return "&lt;salmon&gt;[ " .. table.concat(t, " ") .. " ]"
+    return "<salmon>[ " .. table.concat(t, " ") .. " ]"
   end
 end</script>
 					<eventHandlerList />
