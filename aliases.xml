@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>Oath (by Romaen)</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>ra - reset afflictions</name>
+				<script>oath.echo("Manually resetting afflictions.")
+oath.affs = {}</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^ra$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>op - pause oath</name>
+				<script>if oath.pause then
+  oath.echo("&lt;green&gt;Unpausing oath priority management.")
+  oath.pause = false
+else
+  oath.echo("&lt;red&gt;Pausing oath priority management.")
+  oath.pause = true
+end</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^op$</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+</MudletPackage>
